@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "title":"Django Unchained",
         "release_year": "2012",
         "director":"Quentin Tarantino",
@@ -7,6 +8,7 @@
         "image_reference": "djangoUnchained.png"
     },
     {
+        "id": 2,
         "title":"Shrek",
         "release_year":"2001",
         "director":"Andrew Adamson",
@@ -14,6 +16,7 @@
         "image_reference": "shrek.png"
     },
     {
+        "id": 3,
         "title":"Pulp Fiction",
         "release_year":"1994",
         "director":"Quentin Tarantino",
@@ -21,6 +24,7 @@
         "image_reference":"pulpfiction.png"
     },
     {
+        "id": 4,
         "title":"Get Out",
         "release_year":"2017",
         "director":"Jordan Peele",
@@ -28,6 +32,7 @@
         "image_reference":"getout.png"
     },
     {
+        "id": 5,
         "title":"Saving Private Ryan",
         "release_year":"1998",
         "director":"Steven Spielberg",
@@ -35,6 +40,7 @@
         "image_reference":"ryan.png"
     },
     {
+        "id": 6,
         "title":"Gladiator",
         "release_year":"2000",
         "director":"Ridley Scott",
