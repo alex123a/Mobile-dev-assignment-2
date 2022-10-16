@@ -15,6 +15,7 @@ import com.example.assignmenttemplate.database.MovieDatabase
     TODO
     - Use the technology with GroupList or whatever that was called to display the movies
     - Navigation techlogy by clicking on movie image and getting into a detailed movie page
+    - Fix loading of database in MovieDatabase file
  */
 
 class MainActivity : AppCompatActivity() {
