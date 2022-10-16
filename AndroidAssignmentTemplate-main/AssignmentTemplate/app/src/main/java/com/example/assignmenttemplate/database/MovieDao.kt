@@ -1,12 +1,10 @@
 package com.example.assignmenttemplate.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface MovieDao {
+
     @Query("SELECT * FROM Movie")
     fun getAll(): List<Movie>
 
@@ -19,4 +17,6 @@ interface MovieDao {
     @Delete
     fun delete(movie: Movie)
 
+    @Query("UPDATE Movie SET image_reference = :imageRef WHERE id = :movieID")
+    fun updateImage(movieID: Int, imageRef: String)
 }
