@@ -1,11 +1,10 @@
 package com.example.assignmenttemplate
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.assignmenttemplate.database.Movie
@@ -13,7 +12,7 @@ import com.example.assignmenttemplate.database.MovieDatabase
 
 /*
     TODO
-    - Use the technology with GroupList or whatever that was called to display the movies
+    - Use the technology with recycleview or whatever that was called to display the movies
     - Navigation techlogy by clicking on movie image and getting into a detailed movie page
     - Fix loading of database in MovieDatabase file
  */
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity() {
             var movie6 = Movie(0, "Gladiator", "2000", "Ridley Scott", arrayListOf("Russel Crowe", "Joaquin Phoenix", "Connie Nielsen"), "gladiator")
             movieDatabase.movieDao().insert(movie6)
         }
-
     }
 
     fun showMovie(view: View) {
@@ -61,19 +59,27 @@ class MainActivity : AppCompatActivity() {
         if (movie != null) {
             attributes.text =
                 "title: " + movie.title + "\nrelease_year: " + movie.director + "\nAdmin Status: " + movie.cast
-
-            // Testing image below
-            setContentView(R.layout.activity_main)
-            val imageView = ImageView(this)
-            imageView.layoutParams = LinearLayout.LayoutParams(300, 300) // value is in pixels
-            println("movie ref: ${movie.image_reference}")
-            val imageID =
-                this.resources.getIdentifier(movie.image_reference, "drawable", this.packageName)
-            println("reee: $imageID")
-            imageView.setImageResource(imageID)
-            val layout = findViewById<ConstraintLayout>(R.id.layout)
-            println("Layout: $layout")
-            layout?.addView(imageView)
         }
+
+        // Testing image below
+        /*
+        setContentView(R.layout.activity_main)
+        val imageView = ImageView(this)
+        imageView.layoutParams = LinearLayout.LayoutParams(300, 300) // value is in pixels
+        println("movie ref: ${movie.image_reference}")
+        val imageID =
+            this.resources.getIdentifier(movie.image_reference, "drawable", this.packageName)
+        println("reee: $imageID")
+        imageView.setImageResource(imageID)
+        val layout = findViewById<ConstraintLayout>(R.id.layout)
+        println("Layout: $layout")
+        layout?.addView(imageView)
+
+         */
+    }
+
+    fun showMovieListActivity(view: View) {
+        val intent = Intent(this@MainActivity, MovieListActivity::class.java)
+        startActivity(intent)
     }
 }
