@@ -58,18 +58,22 @@ class MainActivity : AppCompatActivity() {
 
     fun showMovie(view: View) {
         var movie = movieDatabase.movieDao().loadByID(numbers.text.toString().toInt())
-        attributes.text = "title: " + movie.title + "\nrelease_year: " + movie.director + "\nAdmin Status: " + movie.cast
+        if (movie != null) {
+            attributes.text =
+                "title: " + movie.title + "\nrelease_year: " + movie.director + "\nAdmin Status: " + movie.cast
 
-        // Testing image below
-        setContentView(R.layout.activity_main)
-        val imageView = ImageView(this)
-        imageView.layoutParams = LinearLayout.LayoutParams(300, 300) // value is in pixels
-        println("movie ref: ${movie.image_reference}")
-        val imageID = this.resources.getIdentifier(movie.image_reference, "drawable", this.packageName)
-        println("reee: $imageID")
-        imageView.setImageResource(imageID)
-        val layout = findViewById<ConstraintLayout>(R.id.layout)
-        println("Layout: $layout")
-        layout?.addView(imageView)
+            // Testing image below
+            setContentView(R.layout.activity_main)
+            val imageView = ImageView(this)
+            imageView.layoutParams = LinearLayout.LayoutParams(300, 300) // value is in pixels
+            println("movie ref: ${movie.image_reference}")
+            val imageID =
+                this.resources.getIdentifier(movie.image_reference, "drawable", this.packageName)
+            println("reee: $imageID")
+            imageView.setImageResource(imageID)
+            val layout = findViewById<ConstraintLayout>(R.id.layout)
+            println("Layout: $layout")
+            layout?.addView(imageView)
+        }
     }
 }
