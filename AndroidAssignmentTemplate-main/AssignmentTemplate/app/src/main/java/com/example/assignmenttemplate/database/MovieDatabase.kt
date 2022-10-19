@@ -22,6 +22,7 @@ abstract class MovieDatabase : RoomDatabase() {
                     .allowMainThreadQueries()
                     .build()
             }
+            // INSTANCE!!.clearAllTables()
             return INSTANCE
         }
     }

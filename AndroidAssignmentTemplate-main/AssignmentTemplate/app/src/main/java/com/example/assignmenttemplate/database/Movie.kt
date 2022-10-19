@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
+import com.example.assignmenttemplate.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -15,7 +16,7 @@ data class Movie(
     @ColumnInfo(name = "release_year") val releaseYear: String?,
     @ColumnInfo(name = "director") val director: String?,
     @ColumnInfo(name = "cast") val cast: ArrayList<String>,
-    @ColumnInfo(name = "image_reference") val image_reference: String
+    @ColumnInfo(name = "image_reference") val image_reference: Int
 )
 
 class CastTypeConverter {
