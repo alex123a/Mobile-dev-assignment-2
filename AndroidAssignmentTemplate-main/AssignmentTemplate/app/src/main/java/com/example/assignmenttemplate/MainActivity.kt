@@ -14,12 +14,6 @@ import com.example.assignmenttemplate.database.MovieDatabase
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-/*
-    TODO
-    - Detailed page
-    - Design
- */
-
 class MainActivity : AppCompatActivity() {
     lateinit var movieDatabase : MovieDatabase
     lateinit var adapter: MovieAdapter
@@ -65,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         var recyclerView: RecyclerView = findViewById(R.id.movieView)
         recyclerView.setHasFixedSize(true)
         var layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-        //var layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
     }

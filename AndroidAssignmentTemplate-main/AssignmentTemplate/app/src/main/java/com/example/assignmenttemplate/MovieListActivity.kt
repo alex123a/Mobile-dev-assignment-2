@@ -28,8 +28,25 @@ class MovieListActivity : AppCompatActivity() {
         if (movieID != null) {
             val movie = movieDatabase.movieDao().loadByID(movieID.toInt())
 
-            val textView: TextView = this.findViewById(R.id.detailedMovieTitle)
-            textView.text = movie.title
+            val image: ImageView = this.findViewById(R.id.detailedMovieImage)
+            image.setImageResource(movie.image_reference)
+
+            val title: TextView = this.findViewById(R.id.detailedMovieTitle)
+            title.text = "Title: " + movie.title
+
+            val release: TextView = this.findViewById(R.id.detailedMovieReleaseYear)
+            release.text = "Release year: " + movie.releaseYear
+
+            val director: TextView = this.findViewById(R.id.detailedMovieDirector)
+            director.text = "Director: " + movie.director
+
+            val cast: TextView = this.findViewById(R.id.detailedMovieCast)
+            val actors: ArrayList<String> = movie.cast
+            var castText = "Cast: "
+            for (actor in actors) {
+                castText = "$castText$actor, "
+            }
+            cast.text = castText
         }
     }
 }
