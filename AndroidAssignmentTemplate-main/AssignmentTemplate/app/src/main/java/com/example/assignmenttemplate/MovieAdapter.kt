@@ -25,7 +25,7 @@ class MovieAdapter(private val data : ArrayList<Movie>) : RecyclerView.Adapter<M
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.movieImage.setImageResource(data[position].image_reference)
-        holder.movieID.text = position.toString()
+        holder.movieID.text = "" + (position + 1)
         holder.movieTitle.text = data[position].title
     }
 

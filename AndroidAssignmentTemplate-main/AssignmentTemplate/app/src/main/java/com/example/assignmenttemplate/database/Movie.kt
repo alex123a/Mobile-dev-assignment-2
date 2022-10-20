@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken
 @Entity(tableName = "Movie")
 data class Movie(
     @PrimaryKey (autoGenerate = true)
-    @ColumnInfo(name = "id") val id: Int = 7,
+    @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "release_year") val releaseYear: String?,
     @ColumnInfo(name = "director") val director: String?,

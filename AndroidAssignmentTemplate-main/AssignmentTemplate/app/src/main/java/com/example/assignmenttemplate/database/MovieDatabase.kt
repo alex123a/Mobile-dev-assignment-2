@@ -17,7 +17,7 @@ abstract class MovieDatabase : RoomDatabase() {
 
         fun getAppDatabase(context: Context): MovieDatabase? {
             if (INSTANCE == null) {
-                INSTANCE = databaseBuilder(context.applicationContext, MovieDatabase::class.java, "MovieDB")
+                INSTANCE = databaseBuilder(context.applicationContext, MovieDatabase::class.java, "TheMovieGuideDB")
                     .allowMainThreadQueries()
                     .build()
             }

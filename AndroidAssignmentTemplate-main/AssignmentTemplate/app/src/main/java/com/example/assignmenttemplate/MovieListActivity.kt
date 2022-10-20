@@ -23,7 +23,13 @@ class MovieListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_display_movies)
 
         movieDatabase = MovieDatabase.getAppDatabase(this)!!
-        val textView: TextView = this.findViewById(R.id.detailedMovieID)
-        textView.text = intent.getStringExtra("movie_id")
+
+        val movieID = intent.getStringExtra("movie_ID")
+        if (movieID != null) {
+            val movie = movieDatabase.movieDao().loadByID(movieID.toInt())
+
+            val textView: TextView = this.findViewById(R.id.detailedMovieTitle)
+            textView.text = movie.title
+        }
     }
 }

@@ -20,18 +20,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnOpenAct2"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
-        android:text="Change to movie list view"
-        android:onClick="showDetailedMovie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
