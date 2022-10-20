@@ -22,19 +22,15 @@ import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
     lateinit var movieDatabase : MovieDatabase
-
-    private lateinit var numbers: EditText
-    private lateinit var attributes: TextView
-    private lateinit var picturePaths: ArrayList<Int>
+    lateinit var adapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         movieDatabase = MovieDatabase.getAppDatabase(this)!!
-        numbers = findViewById<EditText>(R.id.editTextNumber)
-        attributes = findViewById(R.id.Attributes)
 
         fillDatabase()
+        fillRecycleView()
     }
 
     fun fillDatabase() = runBlocking {
@@ -62,32 +58,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showMovie(view: View) {
-        var movie = movieDatabase.movieDao().loadByID(numbers.text.toString().toInt())
-        if (movie != null) {
-            attributes.text =
-                "title: " + movie.title + "\nrelease_year: " + movie.director + "\nAdmin Status: " + movie.cast
-        }
+    fun fillRecycleView() {
+        var movieList : ArrayList<Movie> = movieDatabase.movieDao().getAll() as ArrayList<Movie>
 
-        // Testing image below
-        /*
-        setContentView(R.layout.activity_main)
-        val imageView = ImageView(this)
-        imageView.layoutParams = LinearLayout.LayoutParams(300, 300) // value is in pixels
-        println("movie ref: ${movie.image_reference}")
-        val imageID =
-            this.resources.getIdentifier(movie.image_reference, "drawable", this.packageName)
-        println("reee: $imageID")
-        imageView.setImageResource(imageID)
-        val layout = findViewById<ConstraintLayout>(R.id.layout)
-        println("Layout: $layout")
-        layout?.addView(imageView)
+        adapter = MovieAdapter(movieList)
 
-         */
+        var recyclerView: RecyclerView = findViewById(R.id.movieView)
+        recyclerView.setHasFixedSize(true)
+        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        //var layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
     }
 
-    fun showMovieListActivity(view: View) {
-        val intent = Intent(this@MainActivity, MovieListActivity::class.java)
+    fun showDetailedMovie(view: View) {
+        val movieID = view.findViewById<TextView>(R.id.movieID).text.toString()
+        println("testing test test: $movieID")
+        val intent = Intent(this@MainActivity, MovieListActivity::class.java).apply {
+            putExtra("movie_id", movieID)
+        }
         startActivity(intent)
     }
 }
