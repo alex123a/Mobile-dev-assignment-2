@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.assignmenttemplate.database.Movie
 import com.example.assignmenttemplate.database.MovieDatabase
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 /*
     TODO
-    - Fix loading of database in MovieDatabase file
+    - Detailed page
     - Design
  */
 
@@ -32,25 +34,30 @@ class MainActivity : AppCompatActivity() {
         numbers = findViewById<EditText>(R.id.editTextNumber)
         attributes = findViewById(R.id.Attributes)
 
-        //Populates database if empty
-        if(movieDatabase.movieDao().getAll().isEmpty()){
-            // Log.i("DatabaseTest", "Ran Database Population")
-            var movie1 = Movie(0, "Django Unchained", "2012", "Quentin Tarantino", arrayListOf("Jamie Foxx","Leonardo DiCaprio", "Christoph Waltz"), this.resources.getIdentifier("djangounchained", "drawable", this.packageName))
+        fillDatabase()
+    }
+
+    fun fillDatabase() = runBlocking {
+        launch {
+            // Clearing tables before filling the table with data
+            movieDatabase.clearAllTables()
+
+            var movie1 = Movie(0, "Django Unchained", "2012", "Quentin Tarantino", arrayListOf("Jamie Foxx","Leonardo DiCaprio", "Christoph Waltz"), R.drawable.djangounchained)
             movieDatabase.movieDao().insert(movie1)
 
-            var movie2 = Movie(0, "Shrek", "2001", "Andrew Adamson", arrayListOf("Mike Myers", "Eddie Murhpy", "Cameron Diaz"), this.resources.getIdentifier("shrek", "drawable", this.packageName))
+            var movie2 = Movie(0, "Shrek", "2001", "Andrew Adamson", arrayListOf("Mike Myers", "Eddie Murhpy", "Cameron Diaz"), R.drawable.shrek)
             movieDatabase.movieDao().insert(movie2)
 
-            var movie3 = Movie(0, "Pulp Fiction", "1994", "Quentin Tarantino", arrayListOf("Uma Thurman", "Samuel L. Jackson", "John Travolta"), this.resources.getIdentifier("pulpfiction", "drawable", this.packageName))
+            var movie3 = Movie(0, "Pulp Fiction", "1994", "Quentin Tarantino", arrayListOf("Uma Thurman", "Samuel L. Jackson", "John Travolta"), R.drawable.pulpfiction)
             movieDatabase.movieDao().insert(movie3)
 
-            var movie4 = Movie(0, "Get Out", "2017", "Jordan Peele", arrayListOf("Daniel Kaluuya", "Allison Williams", "LaKeith Stanfield"), this.resources.getIdentifier("getout", "drawable", this.packageName))
+            var movie4 = Movie(0, "Get Out", "2017", "Jordan Peele", arrayListOf("Daniel Kaluuya", "Allison Williams", "LaKeith Stanfield"), R.drawable.getout)
             movieDatabase.movieDao().insert(movie4)
 
-            var movie5 = Movie(0, "Saving Private Ryan", "1998", "Steven Spielberg", arrayListOf("Tom Hanks", "Matt Damon", "Vin Diesel"), this.resources.getIdentifier("ryan", "drawable", this.packageName))
+            var movie5 = Movie(0, "Saving Private Ryan", "1998", "Steven Spielberg", arrayListOf("Tom Hanks", "Matt Damon", "Vin Diesel"), R.drawable.ryan)
             movieDatabase.movieDao().insert(movie5)
 
-            var movie6 = Movie(0, "Gladiator", "2000", "Ridley Scott", arrayListOf("Russel Crowe", "Joaquin Phoenix", "Connie Nielsen"), this.resources.getIdentifier("gladiator", "drawable", this.packageName))
+            var movie6 = Movie(0, "Gladiator", "2000", "Ridley Scott", arrayListOf("Russel Crowe", "Joaquin Phoenix", "Connie Nielsen"), R.drawable.gladiator)
             movieDatabase.movieDao().insert(movie6)
         }
     }
