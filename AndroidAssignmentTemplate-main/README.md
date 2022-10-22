@@ -7,3 +7,4 @@ Open assignment_2 project in Android Studio
 
 Add device (I used Pixel 6 API 33)
 
+Click on the run button
